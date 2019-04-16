@@ -5,6 +5,7 @@ namespace Dojo;
 
 
 use Dojo\Products\Product;
+use function foo\func;
 
 class Buy
 {
@@ -19,9 +20,17 @@ class Buy
     public function makeTransaction(): object
     {
         $price = $this->product->getPrice();
-        foreach ($this->coins as $coin){
+        $copyOfCoins = $this->coins;
+        foreach ($this->coins as $key => $coin){
            $price -= $coin['price'];
-           unset
+           unset($copyOfCoins['key']);
         }
+        $result = [
+            'getProduct' => function() {return $this->product->getProduct();},
+            'getReturnCoins' => function () use ($copyOfCoins){ return $copyOfCoins; }
+        ];
+
+        return (object) $result;
+
     }
 }

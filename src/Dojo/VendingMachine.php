@@ -49,7 +49,7 @@ class VendingMachine
         $productClass = 'Dojo\Products\\'.$string.'Product';
         $product = new $productClass();
 
-        $transaction = new Buy($this->coins, $productClass);
-        $transaction->makeTransaction();
+        $transaction = new Buy($this->coins, $product);
+        return $transaction->makeTransaction();
     }
 }
