@@ -44,12 +44,15 @@ class VendingMachine
         return $sum;
     }
 
-    public function buyProduct(string $string)
+    public function buyProduct(string $string): BuyingResult
     {
         $productClass = 'Dojo\Products\\'.$string.'Product';
         $product = new $productClass();
 
         $transaction = new Buy($this->coins, $product);
+
+        //var_dump($transaction->makeTransaction());
+        //die;
         return $transaction->makeTransaction();
     }
 }

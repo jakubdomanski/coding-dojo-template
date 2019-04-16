@@ -17,20 +17,17 @@ class Buy
         $this->product = $product;
     }
 
-    public function makeTransaction(): object
+    public function makeTransaction(): BuyingResult
     {
         $price = $this->product->getPrice();
         $copyOfCoins = $this->coins;
         foreach ($this->coins as $key => $coin){
            $price -= $coin['price'];
-           unset($copyOfCoins['key']);
+           unset($copyOfCoins[$key]);
         }
-        $result = [
-            'getProduct' => function() {return $this->product->getProduct();},
-            'getReturnCoins' => function () use ($copyOfCoins){ return $copyOfCoins; }
-        ];
+        return new BuyingResult($this->product->getProduct(),
+          $copyOfCoins);
 
-        return (object) $result;
 
     }
 }
