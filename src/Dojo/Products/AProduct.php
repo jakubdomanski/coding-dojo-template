@@ -6,19 +6,17 @@ namespace Dojo\Products;
 
 class AProduct implements Product
 {
-    public $value = 0.65;
+    public $price = 0.65;
 
-    protected $name;
+    protected $name = 'A';
 
-    public function __construct(string $name)
-    {
-        $this->name = $name;
-    }
-
-    public function getProductName(): string
+    public function getProduct(): string
     {
         return $this->name;
     }
 
-
+    public function getPrice(): float
+    {
+        return $this->price;
+    }
 }

@@ -8,5 +8,5 @@ interface Product
 {
     public function getProduct(): string ;
 
-    public function getReturnCoins(): array;
+    public function getPrice(): float;
 }

@@ -91,7 +91,7 @@ class VendorMachineTest extends \PHPUnit\Framework\TestCase
         $vendingMachine->insertCoin(Coin::NICKEL);
 
         $buingResult = $vendingMachine->buyProduct('A');
-        $this->assertEquals('A', $buingResult->getProductName());
+        $this->assertEquals('A', $buingResult->getProduct());
         $this->assertEmpty($buingResult->getReturnCoins());
     }
 

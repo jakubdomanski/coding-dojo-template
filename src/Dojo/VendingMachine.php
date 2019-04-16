@@ -3,7 +3,6 @@
 
 namespace Dojo;
 
-
 use Dojo\Dictionary\Coin;
 
 class VendingMachine
@@ -47,7 +46,10 @@ class VendingMachine
 
     public function buyProduct(string $string)
     {
-        $product = new $string . "Product"();
+        $productClass = 'Dojo\Products\\'.$string.'Product';
+        $product = new $productClass();
 
+        $transaction = new Buy($this->coins, $productClass);
+        $transaction->makeTransaction();
     }
 }
